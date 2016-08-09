@@ -3,12 +3,28 @@
 ###本demo运行的效果
 ###播放器播放音频的方法，voicemodel可自行构建，必须包含播放的url
 
-+ (YTPlayerViewController *)shareInstance;
+    /**
+     *  播放器单例
+     *
+     *  @return YTPlayerViewController
+     */
+    + (YTPlayerViewController *)shareInstance;
+    /**
+      *  队列
+      *
+      *  @param audiosArr 当前队列
+      *  @param curRow    当前播放第几首歌
+      *  @param type      音频类型
+      */
+      - (void)playAudioWithArray:(NSArray *)audiosArr AndCurrentRow:(NSInteger)curRow AudioType:(NSString *)type;
+    /**
+     *  队列
+     *
+     *  @param singeAudioModel 当前音频模型
+     *  @param type      音频类型
+     */
+    - (void)playSingleAudio:(VoiceModel *)singeAudioModel AudioType:(NSString *)type;
 
-- (void)playAudioWithArray:(NSArray *)audiosArr AndCurrentRow:(NSInteger)curRow AudioType:(NSString *)type;
-
-- (void)playSingleAudio:(VoiceModel *)singeAudioModel AudioType:(NSString *)type;
-- 
-![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
-![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
-![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
+    ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0183.PNG?raw=true "github") 
+    ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
+    ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0185.PNG?raw=true "github") 
