@@ -28,3 +28,8 @@
 ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0183.PNG?raw=true "github") 
 ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
 ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0185.PNG?raw=true "github") 
+
+## contact me  
+1.[博客](http://christmascat.lofter.com)<br />  
+2.[微博](http://weibo.com/3388333772/profile?topnav=1&wvr=6)<br />  
+
