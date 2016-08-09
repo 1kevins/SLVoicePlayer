@@ -24,8 +24,7 @@
      */
     - (void)playSingleAudio:(VoiceModel *)singeAudioModel AudioType:(NSString *)type;
 ###本demo运行的效果
-![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0183.PNG?raw=true "github") 
-![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
+![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0183.PNG?raw=true "github") ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0184.PNG?raw=true "github") 
 ![github](https://github.com/1kevins/SLVoicePlayer/blob/master/IMG_0185.PNG?raw=true "github") 
 
 ## contact me  
