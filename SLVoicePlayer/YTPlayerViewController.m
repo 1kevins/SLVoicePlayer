@@ -43,7 +43,8 @@
 @property (nonatomic, strong) UIButton *toggleButton;
 @property (nonatomic, strong) UIButton *prevButton;
 @property (nonatomic, strong) UIButton *nextButton;
-
+@property(nonatomic,strong) UIProgressView * Progress;
+@property(nonatomic,strong)AVPlayerItem *item;
 // HysteriaPlayer
 @property (nonatomic, retain) NSMutableDictionary* media;
 @property (nonatomic, strong) NSTimer  *audioTimer; // 播放定时器
@@ -247,7 +248,7 @@
 
 - (void)hysteriaPlayerCurrentItemChanged:(AVPlayerItem *)item {
 
-
+    self.item =item;
 }
 //播放器状态
 - (void)hysteriaPlayerReadyToPlay:(HysteriaPlayerReadyToPlay)identifier {
@@ -288,12 +289,24 @@
 
 - (void)hysteriaPlayerCurrentItemPreloaded:(CMTime)time {
     
+    
   
     NSLog(@"--->CMTime:%d",time.timescale);
     NSLog(@"--->CMTime:%lld",time.value);
     NSLog(@"--->CMTime:%u",time.flags);
     NSLog(@"--->CMTime:%lld",time.epoch);
 }
+
+- (NSTimeInterval)availableDuration {
+    
+    NSArray *loadedTimeRanges = [self.item loadedTimeRanges];
+    CMTimeRange timeRange     = [loadedTimeRanges.firstObject CMTimeRangeValue];// 获取缓冲区域
+    float startSeconds        = CMTimeGetSeconds(timeRange.start);
+    float durationSeconds     = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval result     = startSeconds + durationSeconds;// 计算缓冲总进度
+    return result;
+}
+
 
 //
 - (void)setUI {
@@ -354,6 +367,18 @@
         make.size.mas_equalTo(CGSizeMake(IPHONE_WIDTH, sliderViewH));
         make.bottom.mas_equalTo(self.toggleButton.mas_top);
     }];
+    
+    self.Progress = [[UIProgressView alloc]init];
+    [self.sliderView.progressSlider addSubview:self.Progress];
+    self.Progress.backgroundColor = [UIColor clearColor];
+    self.Progress.progressTintColor = [UIColor redColor];;
+    [self.Progress mas_makeConstraints:^(MASConstraintMaker *make) {
+         make.left.equalTo(self.sliderView.progressSlider.mas_left);
+        make.right.equalTo(self.sliderView.progressSlider.mas_right);
+        make.height.mas_equalTo(@4);
+        make.centerY.mas_equalTo(self.sliderView.progressSlider.mas_centerY);
+    }];
+    
 
     [self.sliderView.progressSlider addTarget:self action:@selector(slideStartToChange:) forControlEvents:UIControlEventTouchDown];
     [self.sliderView.progressSlider addTarget:self action:@selector(sliderChangeValue:) forControlEvents:UIControlEventValueChanged];
@@ -427,9 +452,8 @@
         self.sliderView.crruentLabel.text = [self stringWithCheckCoderTime:ct];
         self.sliderView.durationLabel.text =[self stringWithCheckCoderTime:dt];
     }
-    NSLog(@"%lf",ct);
-  NSLog(@"%lf",dt);
-     NSLog(@"%lf",[[YTPlayerViewController shareInstance]playerCurrentProgress]);
+    self.Progress.progress =[self availableDuration]/dt;
+    NSLog(@"当前缓冲进度 ---》%f",[self availableDuration]/dt);
 }
 
 #pragma mark - MediumView Blocks Events

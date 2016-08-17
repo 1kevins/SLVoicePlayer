@@ -7,10 +7,6 @@
 //
 
 #import "JSONModel.h"
-
-
-
-
 @protocol VoiceModel @end
 
 @interface VoiceModel : JSONModel
@@ -24,22 +20,10 @@
 @property (nonatomic, strong) NSString <Optional>* frontCoverTitle;
 @property (nonatomic, strong) NSNumber <Optional>* distance;
 @property (nonatomic, strong) NSNumber <Optional>* audioCount;
-@property (nonatomic, strong) NSNumber <Optional>* commented;
-@property (nonatomic, strong) NSNumber <Optional>* collected;
-@property (nonatomic, strong) NSNumber <Optional>* played;
-@property (nonatomic, strong) NSNumber <Optional>* voiceDuration;
-@property (nonatomic, strong) NSNumber <Optional>* isCollect;
-@property (copy, nonatomic) NSMutableArray<Optional>* tags;
+@property (nonatomic, strong) NSNumber <Optional>* duration;
 @property (strong, nonatomic) NSString<Optional>* authorCn;
 @property (strong, nonatomic) NSString<Optional>* authorEn;
-@property (nonatomic, strong) NSMutableArray<Optional> *images;
-@property (nonatomic) NSNumber <Optional> * duration;
-@property (nonatomic) NSNumber <Optional> * like;
-@property(nonatomic,strong) NSMutableArray< Optional>*tagsdetail;
-@property(nonatomic,strong) NSMutableArray<Optional>*poisdetail;
-@property(nonatomic,strong)NSString <Optional>*uid;
-@property(nonatomic,strong)NSNumber <Optional>*playAt;
-@property(nonatomic,strong)NSNumber <Optional>*playTime;
+
 
 
 @end
